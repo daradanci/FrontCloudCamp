@@ -45,8 +45,8 @@ export const Slice = createSlice({
         email:"",
         sex:{ id: 'field-sex-option-empty', label: 'Не выбрано' },
         advantages:[''],
-        radio:0,
-        checkbox:[],
+        radio:-1,
+        checkbox:[0],
         about:"",
         modalMode:0, // 1: ok-opened, 0: closed, -1: not-ok-opened
         errorList:[],
@@ -105,6 +105,11 @@ export const Slice = createSlice({
             }
             // state.advantages.push(action.payload);
         },
+        setRadio: (state, action) => {
+            state.radio=action.payload;
+        },
+
+
 
         setErrorList: (state, action) => {
             state.errorList=action.payload;
@@ -136,6 +141,7 @@ export const Slice = createSlice({
 export const {setStep,nextStep,previousStep,setNickname,
     setName, setSername, setSex, setPhone, setEmail,
     setAdvantages, addAdvantage, removeAdvantage, updateAdvantage,
+    setRadio,
     openModal,closeModal,setModalMode,
     setErrorList, setTouchedList, appendErrorList, appendTouchedList,
 }=Slice.actions;

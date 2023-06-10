@@ -9,7 +9,7 @@ import {
     nextStep,
     previousStep,
     removeAdvantage,
-    setAdvantages,
+    setAdvantages, setRadio,
     setStep,
     updateAdvantage
 } from "../store/Slice";
@@ -22,11 +22,13 @@ function Step2() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const {advantages} = useSelector((state) => state.advantages);
+    const {radio} = useSelector((state) => state.radio);
 
     const goBackHandler=async()=>{
         await dispatch(previousStep())
     }
     const removeHandler=async(value)=>{
+        if(advantages.length>1)
         await dispatch(removeAdvantage(value))
     }
     const addHandler=async()=>{
@@ -35,10 +37,10 @@ function Step2() {
     return(
         <div className={'step1-white-board'}>
             <Formik
-                enableReinitialize={true}
+              enableReinitialize={true}
               initialValues={{
                 advantages: advantages,
-
+                radio: radio
               }}
               validationSchema={Step2ValidationSchema}
               onSubmit={async (values) => {
@@ -48,7 +50,7 @@ function Step2() {
               }}
             >
             {(formik) => {
-            const { errors, touched, isValid, dirty } = formik;
+            const {values, errors, touched, isValid, dirty } = formik;
             return (
                 <Form className={'input-form'}>
                     <label className={'step1-input-label'}>Advantages</label>
@@ -96,13 +98,33 @@ function Step2() {
                     </button>
 
 
+                    <div className={'radio-group'}>
+                    <label className={'step1-input-label'}>Radio group</label>
+                        {advantages.map((item,index) =>(
+                            <div className={'radio-wrapper'}>
+                                <Field id={`field-radio-group-option-${index+1}`} name="radio" className={'radio-button'}
+                                       type={'radio'} index={index+1}
+                                       onClick={async()=>{
+                                           await dispatch(setRadio(index))
+                                       }}
+                                       checked={values.radio === index}
+                                />
+                                <div className={'radio-number'}>{index+1}</div>
+                            </div>
+                        ))}
+                        {errors && errors.radio &&
+                            <div className={'field-tip'}>{errors.radio}</div>
+                        }
 
+                    </div>
 
                     <button id={'button-back'} className={'button-back'} type={'button'} onClick={goBackHandler}>Назад</button>
-                    <button id={'button-next'} type={"submit"} className={'button-next'}>Далее</button>
+                    <button id={'button-next'} type={"submit"} className={'button-next'}
+                    >Далее</button>
               </Form>
                 );
             }}
+
             </Formik>
 
         </div>

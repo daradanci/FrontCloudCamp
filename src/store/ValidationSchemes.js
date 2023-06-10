@@ -64,7 +64,12 @@ export const Step2ValidationSchema = Yup.object().shape({
             Yup.string()
             .required('Required')
         )
-        .required('Required')
+        .max(4)
+
+        .required('Required'),
+    radio: Yup.number()
+        .min(0, 'Required')
+        // .required('Required')
 
 
 
