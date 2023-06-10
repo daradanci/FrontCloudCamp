@@ -43,8 +43,8 @@ export const Slice = createSlice({
         sername:"",
         phone:"",
         email:"",
-        sex:"",
-        advantages:[],
+        sex:{ id: 'field-sex-option-empty', label: 'Не выбрано' },
+        advantages:[''],
         radio:0,
         checkbox:[],
         about:"",
@@ -89,7 +89,22 @@ export const Slice = createSlice({
         setSex: (state, action) => {
             state.sex=action.payload;
         },
-
+        setAdvantages: (state, action) => {
+            state.advantages=action.payload;
+        },
+        addAdvantage: (state, action) => {
+            state.advantages.push(action.payload);
+        },
+        updateAdvantage: (state, action) => {
+            state.advantages[action.payload.index]=action.payload.value;
+        },
+        removeAdvantage: (state, action) => {
+            const index = state.advantages.indexOf(action.payload)
+            if (index > -1) { // only splice array when item is found
+              state.advantages.splice(index, 1); // 2nd parameter means remove one item only
+            }
+            // state.advantages.push(action.payload);
+        },
 
         setErrorList: (state, action) => {
             state.errorList=action.payload;
@@ -120,6 +135,7 @@ export const Slice = createSlice({
 
 export const {setStep,nextStep,previousStep,setNickname,
     setName, setSername, setSex, setPhone, setEmail,
+    setAdvantages, addAdvantage, removeAdvantage, updateAdvantage,
     openModal,closeModal,setModalMode,
     setErrorList, setTouchedList, appendErrorList, appendTouchedList,
 }=Slice.actions;

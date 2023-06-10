@@ -42,31 +42,6 @@ function Main() {
                   phone:phone,
                   email:email
               }}
-              // validate={values => {
-              //    let errorlist = [];
-              //    if (!values.phone) {
-              //      errorlist.push({type:"phone", content:"Required"})
-              //    } else if (
-              //      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.phone)
-              //    ) {
-              //      // errorlist.phone = 'Invalid phone number';
-              //      errorlist.push({type:"phone", content:"Invalid phone number"})
-              //
-              //    }
-              //    if (!values.email) {
-              //      // errorlist.email = 'Required';
-              //      errorlist.push({type:"email", content:"Required"})
-              //
-              //    } else if (
-              //      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-              //    ) {
-              //      // errorlist.email = 'Invalid email address';
-              //      errorlist.push({type:"email", content:"Invalid email address"})
-              //
-              //    }
-              //    setErrors(errorlist)
-              //    return errorlist;
-              // }}
               onSubmit={async (values) => {
                   await dispatch(setStep(1))
                   navigate('/create');
@@ -105,11 +80,6 @@ function Main() {
                       type="email"
                       className={'input-field'}
                         maxLength={30}
-                        // value={email}
-                        // onChange={async(e)=>{
-                        //     e.preventDefault()
-                        //     await dispatch(setEmail(e.target.value))
-                        // }}
                     />
                     {errors.email && touched.email ? (
                     <div className={'field-tip'}>{errors.email}</div>

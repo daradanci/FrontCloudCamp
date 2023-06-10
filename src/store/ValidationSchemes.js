@@ -17,14 +17,12 @@ const MainValidationSchema = Yup.object().shape({
         ),
 });
 
-export default MainValidationSchema;
-
-
 
 export const Step1ValidationSchema = Yup.object().shape({
     nickname: Yup.string()
+        .min(4, "Too Short!")
         .max(30, "Too Long!")
-        .required("Nickname is required")
+        .required("Nickname is required.")
         .matches(
           /^[a-zA-Z0-9]*$/,
           "Nickname must contain only latin symbols and numbers."
@@ -33,11 +31,41 @@ export const Step1ValidationSchema = Yup.object().shape({
     name: Yup.string()
         .min(2, "Too Short!")
         .max(50, "Too Long!")
-        .required("Name is required"),
+        .required("Name is required."),
 
     sername: Yup.string()
+        .min(2, "Too Short!")
         .max(50, "Too Long!")
-        .required("Surname is required"),
+        .required("Surname is required."),
+
+    sex: Yup.object()
+        .shape({
+        id: Yup.mixed()
+            // .notOneOf(['field-sex-option-empty'])
+            .oneOf(["field-sex-option-man", "field-sex-option-woman"])
+            .required("Required")
+        ,
+        label: Yup.string()
+            .required("Required")
+            // .notOneOf(['Не выбрано'])
+
+            // .oneOf(["man", "woman"], "There are only 2 genders."),
+
+    })
+    //     .required('Define your gender.')
+
+
+});
+
+
+export const Step2ValidationSchema = Yup.object().shape({
+    advantages: Yup.array()
+        .of(
+            Yup.string()
+            .required('Required')
+        )
+        .required('Required')
+
 
 
 });
@@ -63,3 +91,7 @@ export const phoneNumberMask = [
     /\d/,
     /\d/
 ];
+
+export default MainValidationSchema;
+
+

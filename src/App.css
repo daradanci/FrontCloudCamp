@@ -446,7 +446,7 @@ color: rgba(0, 0, 0, 0.48);
   height: 44px;
   margin-bottom: 0;
 }
-.button-back:hover{
+.button-back:hover, .button-add:hover{
     background: #d3d3ec;
 }
 .button-remove{
@@ -457,6 +457,37 @@ color: rgba(0, 0, 0, 0.48);
   /*background: #A6A6A6;*/
   /*background-color: rgba(0, 0, 0, 0.5)*/
   filter: brightness(50%);
+}
+.button-add{
+  box-sizing: border-box;
+
+/* Auto layout */
+margin-top: 8px;
+  margin-bottom: 24px;
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 12px;
+gap: 8px;
+
+width: 44px;
+height: 44px;
+
+/* Purple/100 */
+
+border: 1.5px solid #5558FA;
+border-radius: 4px;
+  /*color:#5558FA;*/
+  background-color: #FFFFFF;
+/* Inside auto layout */
+
+flex: none;
+order: 3;
+flex-grow: 0;
+}
+.add-svg{
+  height: 18px;
 }
 .stepper-wrapper{
   display: flex;
