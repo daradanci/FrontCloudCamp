@@ -46,7 +46,7 @@ export const Slice = createSlice({
         sex:{ id: 'field-sex-option-empty', label: 'Не выбрано' },
         advantages:[''],
         radio:-1,
-        checkbox:[0],
+        checkbox:[],
         about:"",
         modalMode:0, // 1: ok-opened, 0: closed, -1: not-ok-opened
         errorList:[],
@@ -100,10 +100,45 @@ export const Slice = createSlice({
         },
         removeAdvantage: (state, action) => {
             const index = state.advantages.indexOf(action.payload)
+
+            if(index===state.radio){
+                    state.radio=-2;
+            }
+            else{
+                if(index<state.radio){
+                    state.radio-=1;
+                }
+            }
+
+
+            for (let i=0; i<state.checkbox.length; i++){
+                if(index===state.checkbox[i]){
+                    // state.checkbox.length
+                    state.checkbox.splice(i, 1);
+                    i-=1;
+                }else{
+                    if(index<state.checkbox[i]){
+                        state.checkbox[i]-=1
+                    }
+                }
+            }
+
             if (index > -1) { // only splice array when item is found
               state.advantages.splice(index, 1); // 2nd parameter means remove one item only
             }
             // state.advantages.push(action.payload);
+        },
+        setCheckbox: (state, action) => {
+            state.checkbox=action.payload;
+        },
+        doCheckbox: (state, action) => {
+            state.checkbox.push(action.payload);
+        },
+        undoCheckbox: (state, action) => {
+            const index = state.checkbox.indexOf(action.payload)
+            if (index > -1) { // only splice array when item is found
+              state.checkbox.splice(index, 1); // 2nd parameter means remove one item only
+            }
         },
         setRadio: (state, action) => {
             state.radio=action.payload;
@@ -141,7 +176,7 @@ export const Slice = createSlice({
 export const {setStep,nextStep,previousStep,setNickname,
     setName, setSername, setSex, setPhone, setEmail,
     setAdvantages, addAdvantage, removeAdvantage, updateAdvantage,
-    setRadio,
+    setRadio, doCheckbox, undoCheckbox,
     openModal,closeModal,setModalMode,
     setErrorList, setTouchedList, appendErrorList, appendTouchedList,
 }=Slice.actions;

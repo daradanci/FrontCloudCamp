@@ -5,12 +5,12 @@ import Select from "react-select";
 import { useFormikContext } from 'formik';
 import { mixed, number, object } from "yup";
 import {
-    addAdvantage,
+    addAdvantage, doCheckbox,
     nextStep,
     previousStep,
     removeAdvantage,
     setAdvantages, setRadio,
-    setStep,
+    setStep, undoCheckbox,
     updateAdvantage
 } from "../store/Slice";
 import {useDispatch, useSelector} from "react-redux";
@@ -23,6 +23,7 @@ function Step2() {
     const navigate = useNavigate();
     const {advantages} = useSelector((state) => state.advantages);
     const {radio} = useSelector((state) => state.radio);
+    const {checkbox} = useSelector((state) => state.checkbox);
 
     const goBackHandler=async()=>{
         await dispatch(previousStep())
@@ -117,6 +118,34 @@ function Step2() {
                         }
 
                     </div>
+
+
+                    <div className={'radio-group'}>
+                    <label className={'step1-input-label'}>Checkbox group</label>
+                        {advantages.map((item,index) =>(
+                            <div className={'radio-wrapper'}>
+                                <Field id={`field-radio-group-option-${index+1}`} name={"checkbox"} className={'radio-button'}
+                                       type={'checkbox'} index={index+1}
+                                       onClick={async()=>{
+                                           const curIndex = checkbox.indexOf(index)
+                                           if(curIndex>-1){
+                                               await dispatch(undoCheckbox(index))
+                                           }else{
+                                               await dispatch(doCheckbox(index))
+
+                                           }
+                                       }}
+                                       checked={checkbox.indexOf(index)>-1}
+                                />
+                                <div className={'radio-number'}>{index+1}</div>
+                            </div>
+                        ))}
+                        {errors && errors.checkbox &&
+                            <div className={'field-tip'}>{errors.checkbox}</div>
+                        }
+
+                    </div>
+
 
                     <button id={'button-back'} className={'button-back'} type={'button'} onClick={goBackHandler}>Назад</button>
                     <button id={'button-next'} type={"submit"} className={'button-next'}
