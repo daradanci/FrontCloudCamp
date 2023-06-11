@@ -51,10 +51,7 @@ export const Step1ValidationSchema = Yup.object().shape({
 
             // .oneOf(["man", "woman"], "There are only 2 genders."),
 
-    })
-    //     .required('Define your gender.')
-
-
+    }),
 });
 
 
@@ -78,6 +75,15 @@ export const Step2ValidationSchema = Yup.object().shape({
 
 
 });
+
+
+export const Step3ValidationSchema = Yup.object().shape({
+    about: Yup.string()
+        // .min(0, 'Required'),
+        .required('Required')
+
+});
+
 
 
 export const phoneNumberMask = [

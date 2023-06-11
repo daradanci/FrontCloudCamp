@@ -13,7 +13,8 @@ async function fetchJSON(url, options) {
 
 export const sendUserRequest = createAsyncThunk(
     'users/sendUserRequest',
-    async (user) => {
+    async (state) => {
+
         return await fetchJSON(
             endpoint,
             {
@@ -22,8 +23,16 @@ export const sendUserRequest = createAsyncThunk(
                     'Content-Type': 'application/json;charset=utf-8',
                 },
                 body: JSON.stringify({
-                    username: user.username,
-                    password: user.password,
+                    nickname:state.nickname,
+                    name:state.name,
+                    sername:state.sername,
+                    phone:state.phone,
+                    email:state.email,
+                    sex:state.sex.id,
+                    advantages:state.advantages,
+                    radio:state.radio,
+                    checkbox:state.checkbox,
+                    about:state.about,
                 })
             }
         )
@@ -143,6 +152,9 @@ export const Slice = createSlice({
         setRadio: (state, action) => {
             state.radio=action.payload;
         },
+        setAbout: (state, action) => {
+            state.about=action.payload;
+        },
 
 
 
@@ -163,11 +175,14 @@ export const Slice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(sendUserRequest.pending, (state, action) => {
+
             })
             .addCase(sendUserRequest.fulfilled, (state, action) => {
+                state.modalMode=1
             })
             .addCase(sendUserRequest.rejected, (state, action) => {
-                // state.userError = action.error.message
+                state.modalMode=-1
+
             })
     }
 
@@ -176,7 +191,7 @@ export const Slice = createSlice({
 export const {setStep,nextStep,previousStep,setNickname,
     setName, setSername, setSex, setPhone, setEmail,
     setAdvantages, addAdvantage, removeAdvantage, updateAdvantage,
-    setRadio, doCheckbox, undoCheckbox,
+    setRadio, doCheckbox, undoCheckbox, setAbout,
     openModal,closeModal,setModalMode,
     setErrorList, setTouchedList, appendErrorList, appendTouchedList,
 }=Slice.actions;

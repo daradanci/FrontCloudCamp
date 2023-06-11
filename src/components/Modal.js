@@ -9,7 +9,7 @@ import {useDispatch, useSelector} from "react-redux";
 import Ok from '../mediafiles/images/ok.svg'
 import NotOk from '../mediafiles/images/not-ok.svg'
 import Cross from '../mediafiles/images/cross.svg'
-function Modal({active,setactive}) {
+function Modal() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const {modalMode} = useSelector((state) => state.modalMode);
@@ -17,6 +17,11 @@ function Modal({active,setactive}) {
     const closeHandler=async()=>{
         // await dispatch(setStep(3))
         await dispatch(closeModal())
+    }
+    const returnHandler=async()=>{
+        // await dispatch(setStep(3))
+        await dispatch(closeModal())
+        navigate('/')
     }
     return(
         <>
@@ -32,7 +37,7 @@ function Modal({active,setactive}) {
                             <img src={Ok} className={'ok'}/>
                         </div>
                         <button id={'button-to-main'} type="submit" className={'button-to-main'}
-                            onClick={closeHandler}
+                            onClick={returnHandler}
                         >На главную</button>
                     </>
 
