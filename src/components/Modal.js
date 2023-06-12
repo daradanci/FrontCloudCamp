@@ -21,7 +21,7 @@ function Modal() {
     const returnHandler=async()=>{
         // await dispatch(setStep(3))
         await dispatch(closeModal())
-        navigate('/')
+        navigate('/FrontCloudCamp')
     }
     return(
         <>

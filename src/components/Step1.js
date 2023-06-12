@@ -27,7 +27,7 @@ function Step1() {
     ]
     const goBackHandler=async()=>{
         // await dispatch(previousStep())
-        navigate('/');
+        navigate('/FrontCloudCamp');
     }
     const {nickname} = useSelector((state) => state.nickname);
     const {name} = useSelector((state) => state.name);

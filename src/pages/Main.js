@@ -44,7 +44,7 @@ function Main() {
               }}
               onSubmit={async (values) => {
                   await dispatch(setStep(1))
-                  navigate('/create');
+                  navigate('/FrontCloudCamp/create');
                   await dispatch(setPhone(values.phone))
                   await dispatch(setEmail(values.email))
                 // await new Promise((r) => setTimeout(r, 500));
