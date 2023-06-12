@@ -76,7 +76,7 @@ function Main() {
                     <Field
                       id="email"
                       name="email"
-                      placeholder="zelinskiy.danya@list.ru"
+                      placeholder="example.email@list.ru"
                       type="email"
                       className={'input-field'}
                         maxLength={30}
