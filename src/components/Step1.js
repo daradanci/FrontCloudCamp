@@ -5,6 +5,7 @@ import Select from "react-select";
 import { useFormikContext } from 'formik';
 import {mixed, number, object, string} from "yup";
 import {
+    appendTouchedList,
     nextStep,
     previousStep,
     setName,
@@ -86,14 +87,22 @@ function Step1() {
                     <Field id="field-sex" name="sex" >
 
                         {({field}) => <Select  options={options} isSearchable={false}
-                              className={'step1-select'} >
+                                                     // placeholder="Не выбрано"
                               value={field.value}
                               onValidate={(values)=>{
                                   console.log(values)
                               }}
+                              // defaultValue={{id:'', label:'no'}}
                               onChange={(option) => {
+                                  // console.log(option)
                                   formik.setFieldValue("sex", {value: option.value, label: option.label});
+
+                                  // form.setFieldValue(field.name, option)
+                                  // if ("id" in option)
+                                  // else
+                                  //     formik.setFieldValue("sex", "None");
                               }}
+                              className={'step1-select'} >
                         </Select>
                         }
                     </Field>
@@ -103,9 +112,11 @@ function Step1() {
                      ) : null}
                     {/*<div className={'field-tip'}>{sex.value}</div>*/}
 
+                    <div className={'button-wrapper'}>
 
                     <button id={'button-back'} className={'button-back'} onClick={goBackHandler}>Назад</button>
                     <button id={'button-next'} type="submit" className={'button-next'}>Далее</button>
+                    </div>
                 </Form>
                 );
             }}
