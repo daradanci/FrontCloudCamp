@@ -24,11 +24,11 @@ function Main() {
                 <div>
                 <div className={'info-name'}>Даниил Зелинский</div>
                 <div className={'info-links'}>
-                    <Link className={'info-link'} to={""}>
+                    <Link className={'info-link'} to={"https://t.me/daradanci"}>
                         <img src={Folder} alt="link-image" className={'link-image'}/>
                         Telegram
                     </Link>
-                    <Link className={'info-link'} to={""}>
+                    <Link className={'info-link'} to={"https://github.com/daradanci"}>
                         <img src={Folder} alt="link-image" className={'link-image'}/>
                         GitHub
                     </Link>

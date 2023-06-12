@@ -28,7 +28,7 @@ export const sendUserRequest = createAsyncThunk(
                     sername:state.sername,
                     phone:state.phone,
                     email:state.email,
-                    sex:state.sex.value,
+                    sex:state.sex.label,
                     advantages:state.advantages,
                     radio:state.radio,
                     checkbox:state.checkbox,
