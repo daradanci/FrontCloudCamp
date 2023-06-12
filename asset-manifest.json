@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/FrontCloudCamp/static/css/main.93e4d990.css",
-    "main.js": "/FrontCloudCamp/static/js/main.a75c4159.js",
+    "main.js": "/FrontCloudCamp/static/js/main.afba5841.js",
     "static/js/787.692e4f99.chunk.js": "/FrontCloudCamp/static/js/787.692e4f99.chunk.js",
     "static/media/Mops.jpg": "/FrontCloudCamp/static/media/Mops.e0e9cb9bee9e9f83beb3.jpg",
     "static/media/SB Sans Interface.ttf": "/FrontCloudCamp/static/media/SB Sans Interface.979c0df052de84707146.ttf",
@@ -12,11 +12,11 @@
     "static/media/cross.svg": "/FrontCloudCamp/static/media/cross.4a8a42d76e95da42dbd3e97fdd573f26.svg",
     "static/media/plus.svg": "/FrontCloudCamp/static/media/plus.123a12c7762141c94c4f926b3f0b36e1.svg",
     "main.93e4d990.css.map": "/FrontCloudCamp/static/css/main.93e4d990.css.map",
-    "main.a75c4159.js.map": "/FrontCloudCamp/static/js/main.a75c4159.js.map",
+    "main.afba5841.js.map": "/FrontCloudCamp/static/js/main.afba5841.js.map",
     "787.692e4f99.chunk.js.map": "/FrontCloudCamp/static/js/787.692e4f99.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.93e4d990.css",
-    "static/js/main.a75c4159.js"
+    "static/js/main.afba5841.js"
   ]
 }
