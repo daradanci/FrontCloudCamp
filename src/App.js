@@ -10,19 +10,12 @@ function App() {
   return (
       <DocumentTitle title={'CloudCamp'}>
         <BrowserRouter basename="/" >
-            <div
-
-            >
-
-
+            <div>
                 <Routes>
-                    <Route exact path={'/'} element={<Main/>}/>
-                    <Route exact path={'/create'} element={<StepperForm/>}/>
+                    <Route exact path={'/FrontCloudCamp'} element={<Main/>}/>
+                    <Route exact path={'/FrontCloudCamp/create'} element={<StepperForm/>}/>
                 </Routes>
-
             </div>
-
-
         </BrowserRouter>
       </DocumentTitle>
   );
