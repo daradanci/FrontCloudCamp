@@ -64,7 +64,7 @@ body{
   left: calc(50% - 900px/2);
   top: 24px;
   background: #FFFFFF;
-  border-radius: 12px 12px 0px 0px;
+  border-radius: 12px 12px 12px 12px;
   padding: 24px;
   display: inline-block;
 }
@@ -391,7 +391,7 @@ color: rgba(0, 0, 0, 0.48);
 }
 .step3-field-tip{
   float: right;
-  margin-right: -10px;
+  margin-right: -130px;
   position: absolute;
   right: 0;
 }
@@ -638,4 +638,130 @@ border-radius: 100px;
 .radio-number{
   margin-top: 3px;
   margin-left: 10px;
+}
+
+@media (max-width: 1000px) {
+  body{
+    /*background-color: deeppink;*/
+  }
+  .white-board{
+    width: 600px;
+    left: calc(50% - 600px/2);
+
+  }
+}
+
+
+@media (max-width: 700px) {
+  body{
+    /*background-color: greenyellow;*/
+  }
+  .white-board{
+    width: 400px;
+    left: calc(50% - 400px/2);
+    padding: 24px;
+
+  }
+  .step-line{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+  .step1-white-board{
+    margin-left:30px;
+    margin-right:30px;
+    margin-bottom: 80px;
+  }
+  .step1-field{
+    width: 300px;
+  }
+  .step1-select{
+    width: 300px;
+  }
+  .step3-field-tip{
+    float: right;
+    margin-right: -200px;
+    position: absolute;
+    right: 0;
+  }
+  .modal-content{
+    width: 300px;
+  }
+}
+
+
+@media (max-width: 640px) {
+  body{
+    /*background-color: cornflowerblue;*/
+  }
+  .white-board{
+    width: 300px;
+    left: calc(50% - 300px/2);
+    padding-top: 24px;
+    padding-bottom: 24px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .step-line{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+  .step1-white-board{
+    margin-left:30px;
+    margin-right:30px;
+    margin-bottom: 80px;
+  }
+  .step1-field,.step2-field,.step1-select, .input-field{
+    width: 200px;
+  }
+  .step3-field-tip{
+    float: right;
+    margin-right: -200px;
+    position: absolute;
+    right: 0;
+  }
+  .modal-content{
+    width: 300px;
+  }
+}
+
+
+@media (max-width: 480px) {
+  body{
+    /*background-color: darkslategray;*/
+  }
+  .white-board{
+    width: 280px;
+    left: calc(50% - 280px/2);
+    padding-top: 24px;
+    padding-bottom: 24px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .step-line{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+  .step1-white-board{
+    margin-left:30px;
+    margin-right:30px;
+    margin-bottom: 80px;
+  }
+  .step1-field,.step2-field,.step1-select,.input-field{
+    width: 200px;
+  }
+  .step3-field-tip{
+    float: right;
+    margin-right: -200px;
+    position: absolute;
+    right: 0;
+  }
+  .modal-content{
+    width: 240px;
+  }
 }

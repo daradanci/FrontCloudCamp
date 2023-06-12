@@ -86,22 +86,14 @@ function Step1() {
                     <Field id="field-sex" name="sex" >
 
                         {({field}) => <Select  options={options} isSearchable={false}
-                                                     // placeholder="Не выбрано"
+                              className={'step1-select'} >
                               value={field.value}
                               onValidate={(values)=>{
                                   console.log(values)
                               }}
-                              // defaultValue={{id:'', label:'no'}}
                               onChange={(option) => {
-                                  // console.log(option)
                                   formik.setFieldValue("sex", {value: option.value, label: option.label});
-
-                                  // form.setFieldValue(field.name, option)
-                                  // if ("id" in option)
-                                  // else
-                                  //     formik.setFieldValue("sex", "None");
                               }}
-                              className={'step1-select'} >
                         </Select>
                         }
                     </Field>
