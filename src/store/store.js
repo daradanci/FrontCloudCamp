@@ -16,8 +16,8 @@ export default configureStore({
         checkbox:Reducer,
         about:Reducer,
         modalMode: Reducer,
-        errorList:Reducer,
-        touchedList:Reducer,
+        textarea_length:Reducer,
+        textarea_max_length:Reducer,
 
     }
 })

@@ -5,7 +5,6 @@ import Select from "react-select";
 import { useFormikContext } from 'formik';
 import {mixed, number, object, string} from "yup";
 import {
-    appendTouchedList,
     nextStep,
     previousStep,
     setName,
@@ -22,8 +21,8 @@ function Step1() {
     const navigate = useNavigate();
 
     const options = [
-      { id: 'field-sex-option-man', label: 'man' },
-      { id: 'field-sex-option-woman', label: 'woman' },
+      { value: 'field-sex-option-man', label: 'man' },
+      { value: 'field-sex-option-woman', label: 'woman' },
     ]
     const goBackHandler=async()=>{
         // await dispatch(previousStep())
@@ -44,7 +43,9 @@ function Step1() {
                   sex:sex,
               }}
               validationSchema={Step1ValidationSchema}
-
+                onValidate={(values)=>{
+                    console.log(values)
+                }}
               onSubmit={async (values) => {
                   await dispatch(nextStep())
                   await dispatch(setNickname(values.nickname))
@@ -93,7 +94,7 @@ function Step1() {
                               // defaultValue={{id:'', label:'no'}}
                               onChange={(option) => {
                                   // console.log(option)
-                                  formik.setFieldValue("sex", {id: option.id, label: option.label});
+                                  formik.setFieldValue("sex", {value: option.value, label: option.label});
 
                                   // form.setFieldValue(field.name, option)
                                   // if ("id" in option)
@@ -106,9 +107,9 @@ function Step1() {
                     </Field>
 
                     {errors.sex && touched.sex ? (
-                    <div className={'field-tip'}>{errors.sex}</div>
+                    <div className={'field-tip'}>Define your gender</div>
                      ) : null}
-                    <div className={'field-tip'}>{sex.id}</div>
+                    {/*<div className={'field-tip'}>{sex.value}</div>*/}
 
 
                     <button id={'button-back'} className={'button-back'} onClick={goBackHandler}>Назад</button>

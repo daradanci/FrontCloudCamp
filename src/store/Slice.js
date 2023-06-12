@@ -28,7 +28,7 @@ export const sendUserRequest = createAsyncThunk(
                     sername:state.sername,
                     phone:state.phone,
                     email:state.email,
-                    sex:state.sex.id,
+                    sex:state.sex.value,
                     advantages:state.advantages,
                     radio:state.radio,
                     checkbox:state.checkbox,
@@ -50,16 +50,17 @@ export const Slice = createSlice({
         nickname:"",
         name:"",
         sername:"",
-        phone:"",
-        email:"",
-        sex:{ id: 'field-sex-option-empty', label: 'Не выбрано' },
+        phone: localStorage.getItem('phone')||"",
+        email: localStorage.getItem('email')||"",
+        sex:[{ value: 'field-sex-option-empty', label: 'Не выбрано' }],
         advantages:[''],
         radio:-1,
         checkbox:[],
         about:"",
         modalMode:0, // 1: ok-opened, 0: closed, -1: not-ok-opened
-        errorList:[],
-        touchedList:[],
+
+        textarea_length:0,
+        textarea_max_length:200,
     },
     reducers: {
         setStep: (state, action) => {
@@ -91,9 +92,11 @@ export const Slice = createSlice({
         },
         setPhone: (state, action) => {
             state.phone=action.payload;
+            localStorage.setItem('phone',action.payload)
         },
         setEmail: (state, action) => {
             state.email=action.payload;
+            localStorage.setItem('email',action.payload)
         },
         setSex: (state, action) => {
             state.sex=action.payload;
@@ -155,21 +158,17 @@ export const Slice = createSlice({
         setAbout: (state, action) => {
             state.about=action.payload;
         },
+        setTextareaLength: (state, action) => {
+            state.textarea_length=action.payload;
+        },
+        setTextareaMaxLength: (state, action) => {
+            state.textarea_max_length=action.payload;
+        },
 
 
 
-        setErrorList: (state, action) => {
-            state.errorList=action.payload;
-        },
-        setTouchedList: (state, action) => {
-            state.touchedList=action.payload;
-        },
-        appendErrorList: (state, action) => {
-            state.errorList+=action.payload;
-        },
-        appendTouchedList: (state, action) => {
-            state.touchedList+=action.payload;
-        },
+
+
 
     },
     extraReducers: (builder) => {
@@ -192,7 +191,7 @@ export const {setStep,nextStep,previousStep,setNickname,
     setName, setSername, setSex, setPhone, setEmail,
     setAdvantages, addAdvantage, removeAdvantage, updateAdvantage,
     setRadio, doCheckbox, undoCheckbox, setAbout,
+    setCheckbox, setTextareaLength, setTextareaMaxLength,
     openModal,closeModal,setModalMode,
-    setErrorList, setTouchedList, appendErrorList, appendTouchedList,
 }=Slice.actions;
 export default Slice.reducer;

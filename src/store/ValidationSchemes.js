@@ -40,18 +40,22 @@ export const Step1ValidationSchema = Yup.object().shape({
 
     sex: Yup.object()
         .shape({
-        id: Yup.mixed()
+        value: Yup.mixed()
             // .notOneOf(['field-sex-option-empty'])
-            .oneOf(["field-sex-option-man", "field-sex-option-woman"])
+            .oneOf(["field-sex-option-man", "field-sex-option-woman"], 'Define your gender.')
             .required("Required")
         ,
         label: Yup.string()
-            .required("Required")
-            // .notOneOf(['Не выбрано'])
+            // .oneOf(["man", "woman"], "There are only 2 genders.")
+            .required("Required"),
 
-            // .oneOf(["man", "woman"], "There are only 2 genders."),
 
-    }),
+
+
+        })
+        .required("Required")
+
+    ,
 });
 
 
@@ -79,7 +83,7 @@ export const Step2ValidationSchema = Yup.object().shape({
 
 export const Step3ValidationSchema = Yup.object().shape({
     about: Yup.string()
-        // .min(0, 'Required'),
+        .max(500, 'Too much blank space')
         .required('Required')
 
 });

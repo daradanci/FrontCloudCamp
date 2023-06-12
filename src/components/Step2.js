@@ -100,27 +100,6 @@ function Step2() {
 
 
                     <div className={'radio-group'}>
-                    <label className={'step1-input-label'}>Radio group</label>
-                        {advantages.map((item,index) =>(
-                            <div className={'radio-wrapper'}>
-                                <Field id={`field-radio-group-option-${index+1}`} name="radio" className={'radio-button'}
-                                       type={'radio'} index={index+1}
-                                       onClick={async()=>{
-                                           await dispatch(setRadio(index))
-                                       }}
-                                       checked={values.radio === index}
-                                />
-                                <div className={'radio-number'}>{index+1}</div>
-                            </div>
-                        ))}
-                        {errors && errors.radio &&
-                            <div className={'field-tip'}>{errors.radio}</div>
-                        }
-
-                    </div>
-
-
-                    <div className={'radio-group'}>
                     <label className={'step1-input-label'}>Checkbox group</label>
                         {advantages.map((item,index) =>(
                             <div className={'radio-wrapper'}>
@@ -145,6 +124,30 @@ function Step2() {
                         }
 
                     </div>
+
+
+                    <div className={'radio-group'}>
+                    <label className={'step1-input-label'}>Radio group</label>
+                        {advantages.map((item,index) =>(
+                            <div className={'radio-wrapper'}>
+                                <Field id={`field-radio-group-option-${index+1}`} name="radio" className={'radio-button'}
+                                       type={'radio'} index={index+1}
+                                       onClick={async()=>{
+                                           await dispatch(setRadio(index))
+                                       }}
+                                       checked={values.radio === index}
+                                />
+                                <div className={'radio-number'}>{index+1}</div>
+                            </div>
+                        ))}
+                        {errors && errors.radio &&
+                            <div className={'field-tip'}>{errors.radio}</div>
+                        }
+
+                    </div>
+
+
+
 
 
                     <button id={'button-back'} className={'button-back'} type={'button'} onClick={goBackHandler}>Назад</button>

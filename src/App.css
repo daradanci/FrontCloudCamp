@@ -302,7 +302,7 @@ gap: 12px;
 width: 100%;
 height: 84px;
 max-width: 100%;
-  min-width: 50%;
+  min-width: 100%;
   max-height: 400px;
   margin-bottom: 8px;
   margin-top: 8px;
@@ -370,7 +370,7 @@ line-height: 20px;
 
 color: rgba(0, 0, 0, 0.48);
 }
-.field-tip{
+.field-tip,.step3-field-tip{
   /*margin-top: 0;*/
   width: 300px;
   height: 16px;
@@ -388,6 +388,17 @@ color: rgba(0, 0, 0, 0.48);
   flex: none;
   order: 0;
   flex-grow: 1;
+}
+.step3-field-tip{
+  float: right;
+  margin-right: -10px;
+  position: absolute;
+  right: 0;
+}
+.step3-tip-wrapper{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
 }
 .button-start, .button-next, .button-back, .button-send, .button-to-main{
   /* Button */
@@ -493,7 +504,7 @@ flex-grow: 0;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
 }
 .white-space{
   height: 64px;
