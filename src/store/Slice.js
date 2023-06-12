@@ -170,6 +170,7 @@ export const Slice = createSlice({
 
 
 
+
     },
     extraReducers: (builder) => {
         builder
@@ -192,6 +193,7 @@ export const {setStep,nextStep,previousStep,setNickname,
     setAdvantages, addAdvantage, removeAdvantage, updateAdvantage,
     setRadio, doCheckbox, undoCheckbox, setAbout,
     setCheckbox, setTextareaLength, setTextareaMaxLength,
+    setCheckboxes, setRadios,
     openModal,closeModal,setModalMode,
 }=Slice.actions;
 export default Slice.reducer;

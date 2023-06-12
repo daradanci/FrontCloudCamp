@@ -1,6 +1,6 @@
 import {Link, useNavigate} from 'react-router-dom';
 import {Field, FieldArray, Form, Formik} from 'formik';
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Select from "react-select";
 import { useFormikContext } from 'formik';
 import { mixed, number, object } from "yup";
@@ -9,7 +9,7 @@ import {
     nextStep,
     previousStep,
     removeAdvantage,
-    setAdvantages, setRadio,
+    setAdvantages, setCheckboxes, setRadio, setRadios,
     setStep, undoCheckbox,
     updateAdvantage
 } from "../store/Slice";
@@ -25,15 +25,18 @@ function Step2() {
     const {radio} = useSelector((state) => state.radio);
     const {checkbox} = useSelector((state) => state.checkbox);
 
+
     const goBackHandler=async()=>{
         await dispatch(previousStep())
     }
     const removeHandler=async(value)=>{
-        if(advantages.length>1)
-        await dispatch(removeAdvantage(value))
+        if(advantages.length>1) {
+            await dispatch(removeAdvantage(value))
+        }
     }
     const addHandler=async()=>{
         await dispatch(addAdvantage(''))
+
     }
     return(
         <div className={'step1-white-board'}>
@@ -111,7 +114,6 @@ function Step2() {
                                                await dispatch(undoCheckbox(index))
                                            }else{
                                                await dispatch(doCheckbox(index))
-
                                            }
                                        }}
                                        checked={checkbox.indexOf(index)>-1}

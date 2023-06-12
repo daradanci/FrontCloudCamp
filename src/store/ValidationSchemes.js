@@ -70,11 +70,11 @@ export const Step2ValidationSchema = Yup.object().shape({
     radio: Yup.number()
         .min(0, 'Required'),
         // .required('Required')
-    checkbox: Yup.array()
-        .of(
-            Yup.number()
-            // .required('Required')
-        )
+    // checkbox: Yup.array()
+    //     .of(
+    //         Yup.number()
+    //         // .required('Required')
+    //     )
 
 
 
